@@ -1,0 +1,45 @@
+Hello,
+
+I am trying communication between raspberry pi 3 and pic 18F series micro controller through spi, the send and receive data through spi in 18F controller is working perfect s the data is displayed on LCD, but however the spi communication in raspberry pi is not working, the code is printing only 0 values not matter what data is sent only 0 value is executed.
+I tried the following program:
+
+import spidev
+import time 
+
+spi = spidev.SpiDev()
+spi.open(0,1)
+counter = 0
+
+while True:
+       try:
+           print ''writing data''
+           data = [104, 103, 102, 108, 111]
+          print ">>>" + str(spi.xfer2(data))
+          time.sleep(1)
+          counter += 1
+          if counter > 4 
+             break
+          time.sleep(1)
+     except(keyboardInterrupt, systemExit):
+          spi.close()
+          raise:
+spi.close()
+print "done"
+
+
+Output:
+writing data
+>>>[0, 0, 0, 0, 0]
+writing data
+>>>[0, 0, 0, 0, 0]
+writing data
+>>>[0, 0, 0, 0, 0]
+writing data
+>>>[0, 0, 0, 0, 0]
+writing data
+>>>[0, 0, 0, 0, 0]
+done
+
+Whatever program I run I am getting only 0 values and not the data what i send. kindly please help.
+
+
